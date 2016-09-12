@@ -1,0 +1,6 @@
+apache:
+    build: docker-containers/apache
+    volumes:
+        - ./:/var/www/html
+    ports:
+        - 7001:80
