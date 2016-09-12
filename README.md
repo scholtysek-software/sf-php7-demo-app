@@ -1,1 +1,1 @@
-# sf2-php7-demo-app
+# sf-php7-demo-app
