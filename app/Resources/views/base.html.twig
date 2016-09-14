@@ -2,12 +2,42 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}SF-PHP Demo Application{% endblock %}</title>
+        {% block stylesheets %} {% endblock %}
+        <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/css3.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <!--Footer Extra-->
+        <div class="full-width-wrapper" id="footer-extra-wrapper">
+            <div class="fixed-width-wrapper">
+                <div id="copyright">
+                    <a href="#" class="logo float-left" title=""><img src="{{ asset('assets/images/logo-footer.png') }}" alt="" ></a>
+
+                    <ul>
+                        <li>(c) 2011 Allright reservred </li>
+                        <li><a href="#" title="">Privacy Policy</a></li>
+                        <li><a href="#" title="">Terms and Conditions</a></li>
+                    </ul>
+                    <a href="#" class="back-to-top sprite" title="Back to top">Back to top</a>
+                </div>
+
+            </div>
+        </div>
+        <!--/Footer Extra-->
         {% block javascripts %}{% endblock %}
+        <script src="{{ asset('assets/js/jquery-1.6.4.min.js')}}"></script>
+        <script src="{{ asset('assets/js/jquery.nivo.slider.js')}}"></script>
+        <script src="{{ asset('assets/js/cufon-yui.js')}}"></script>
+        <script src="{{ asset('assets/js/TitilliumText.font.js')}}"></script>
+        <script src="{{ asset('assets/js/cufon-replace.js')}}"></script>
+        <script src="{{ asset('assets/js/scripts.js')}}"></script>
+        <script src="{{ asset('assets/js/custom.js')}}"></script>
+
     </body>
 </html>
