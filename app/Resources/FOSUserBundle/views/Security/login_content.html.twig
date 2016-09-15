@@ -1,0 +1,83 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!--Body content-->
+<div class="full-width-wrapper" style="margin-bottom: 30px;">
+    <div class="fixed-width-wrapper" id="body-content">
+        <!--Content-->
+        <div id="content" class="float-left content-left">
+            <div class="header-text">
+                <ul id="breadcrumbs">
+                    <li><a href="{{ path('homepage') }}" title="">Home</a></li>
+                    <li class="current"><a href="#" title="">Login</a></li>
+                </ul>
+
+                <h1 class="first-word double-color sp">Sign in</h1>
+
+            </div>
+
+            <div class="post entry-content">
+
+                <div class="clear"></div>
+
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <form action="{{ path("fos_user_security_check") }}" class="maxx-form" id="contact-form" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="form-row">
+                        <label for="username" class="form-row-label">{{ 'security.login.username'|trans }}</label>
+                        <input type="text" class="input-field" id="username" name="_username" value="{{ last_username }}" required="required" style="width:400px" />
+                    </div>
+                    <div class="form-row">
+                        <label for="password" class="form-row-label">{{ 'security.login.password'|trans }}</label>
+                        <input type="password" class="input-field" id="password" name="_password" required="required" style="width:400px" />
+                    </div>
+                    <div class="form-row">
+                        <label for="remember_me" class="form-row-label">{{ 'security.login.remember_me'|trans }}</label>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    </div>
+                    <div class="form-row">
+                        <label class="form-row-label">&nbsp;</label>
+                        <button type="submit" class="black border-radius-3px bold submit" title="">{{ 'security.login.submit'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/Content-->
+
+        <!--Sidebar-->
+        <div id="sidebar" class="float-right">
+
+            <!--box-->
+            <div class="box">
+                <h1 class="first-word double-color sp">More Links</h1>
+
+                <ul class="list cat">
+                    <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                    <li class="current"><a href="#" title="">Praesent ultricies urna a urna</a></li>
+                    <li><a href="#" title="">Quisque metus enim, venenatis</a></li>
+                    <li><a href="#" title="">Nullam ven tincidunt dolor consectetur </a></li>
+                    <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                </ul>
+            </div>
+            <!--/box-->
+
+
+            <!--box-->
+            <div class="box">
+                <h1 class="first-word double-color sp">Locate us</h1>
+
+                <div class="img-border preloading-light">
+                    <img src="{{ asset('assets/images/pix/locateus.jpg') }}" alt="">
+                </div>
+            </div>
+            <!--/box-->
+        </div>
+        <!--/Sidebar-->
+
+    </div>
+</div>
+<!--/Body content-->
+
+

@@ -1,0 +1,32 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+    {% block fos_user_content %}
+        <div class="full-width-wrapper" style="margin-bottom: 30px;">
+            <div class="fixed-width-wrapper " id="body-content">
+                <div id="content" class="">
+
+                    <div class="header-text">
+                        <ul id="breadcrumbs">
+                            <li><a href="{{ path('homepage') }}" title="">Home</a></li>
+                            <li class="current"><a href="#" title="">Register</a></li>
+                        </ul>
+
+                        <h1 class="first-word double-color sp">Registration successful!</h1>
+
+                    </div>
+
+                    <div id="error-404" class="clear">
+                        <h3>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h3>
+                        {% if targetUrl %}
+                            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                        {% endif %}
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    {% endblock fos_user_content %}
