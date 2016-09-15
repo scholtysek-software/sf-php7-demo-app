@@ -251,7 +251,7 @@ ul.point li a:hover em{
     background:url(../images/top-abstract-bg.png) no-repeat -20% top
 }
 #header #banner{
-    height:10px;
+    height:80px;
 }
 #header #banner .logo{
     margin-top:15px;
@@ -1053,4 +1053,14 @@ ul.display-short li .posts-info span.user{
 #error-404 h1{
     font-size:130px;
     background:url(../images/404-shadow.png) no-repeat center 110px;
+}
+
+/* Custom */
+.user-info {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#787878;
+    font-weight:700;
+    margin-right: 10px;
+    margin-top: 10px;
 }

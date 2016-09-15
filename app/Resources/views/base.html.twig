@@ -11,6 +11,42 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <div class="full-width-wrapper" id="header">
+        <div class="full-width-wrapper" id="abstract-bg">
+
+            <!--Banner-->
+            <div class="fixed-width-wrapper" id="banner">
+            </div>
+            <!--/Banner-->
+
+            <!--Navigation + Search-->
+            <div class="fixed-width-wrapper border-radius-5px" id="navigation-bar">
+                <div id="g-navigation">
+                    <ul class="simple-drop-down-menu">
+                        <li class="home-page current border-radius-left-5px"><a href="{{ path('homepage') }}">Home</a></li>
+                        <li><a href="#" title="">About us</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="user-info float-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        Logged in as {{ app.user.username}} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                             Logout
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}" title="">Login</a> |
+                        <a href="{{ path('fos_user_registration_register') }}" title="">Register</a>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!--/Navigation + Search-->
+        </div>
+    </div>
+    <!--/Header-->
+
         {% block body %}{% endblock %}
 
         <!--Footer Extra-->

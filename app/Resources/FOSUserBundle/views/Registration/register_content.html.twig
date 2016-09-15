@@ -1,0 +1,89 @@
+
+<!--Body content-->
+<div class="full-width-wrapper" style="margin-bottom: 30px;">
+    <div class="fixed-width-wrapper" id="body-content">
+        <!--Content-->
+        <div id="content" class="float-left content-left">
+            <div class="header-text">
+                <ul id="breadcrumbs">
+                    <li><a href="{{ path('homepage') }}" title="">Home</a></li>
+                    <li class="current"><a href="#" title="">Register</a></li>
+                </ul>
+
+                <h1 class="first-word double-color sp">Sign up</h1>
+
+            </div>
+
+            <div class="post entry-content">
+
+                <div class="clear"></div>
+
+                <!--form-->
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register maxx-form', 'id':'contact-form'}}) }}
+                <div class="form-row">
+                    {{ form_errors(form.email) }}
+                    {{ form_label(form.email, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                    {{ form_widget(form.email, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_errors(form.username) }}
+                    {{ form_label(form.username, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                    {{ form_widget(form.username, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_errors(form.plainPassword.first) }}
+                    {{ form_label(form.plainPassword.first, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                    {{ form_widget(form.plainPassword.first, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                </div>
+                <div class="form-row">
+                    {{ form_errors(form.plainPassword.second) }}
+                    {{ form_label(form.plainPassword.second, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                    {{ form_widget(form.plainPassword.second, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                </div>
+                {#{{ dump(form) }}#}
+                <div class="form-row">
+                    <label class="form-row-label">&nbsp;</label>
+                    <button type="submit" class="black border-radius-3px bold submit" title="">Sign up</button>
+                </div>
+                {{ form_end(form) }}
+
+                <!--/form-->
+            </div>
+        </div>
+        <!--/Content-->
+
+        <!--Sidebar-->
+        <div id="sidebar" class="float-right">
+
+            <!--box-->
+            <div class="box">
+                <h1 class="first-word double-color sp">More Links</h1>
+
+                <ul class="list cat">
+                    <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                    <li class="current"><a href="#" title="">Praesent ultricies urna a urna</a></li>
+                    <li><a href="#" title="">Quisque metus enim, venenatis</a></li>
+                    <li><a href="#" title="">Nullam ven tincidunt dolor consectetur </a></li>
+                    <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                </ul>
+            </div>
+            <!--/box-->
+
+
+            <!--box-->
+            <div class="box">
+                <h1 class="first-word double-color sp">Locate us</h1>
+
+                <div class="img-border preloading-light">
+                    <img src="{{ asset('assets/images/pix/locateus.jpg') }}" alt="">
+                </div>
+            </div>
+            <!--/box-->
+        </div>
+        <!--/Sidebar-->
+
+    </div>
+</div>
+<!--/Body content-->
+
+
