@@ -15,8 +15,7 @@
         <div class="full-width-wrapper" id="abstract-bg">
 
             <!--Banner-->
-            <div class="fixed-width-wrapper" id="banner">
-            </div>
+            <div class="fixed-width-wrapper" id="banner"></div>
             <!--/Banner-->
 
             <!--Navigation + Search-->
@@ -24,6 +23,19 @@
                 <div id="g-navigation">
                     <ul class="simple-drop-down-menu">
                         <li class="home-page current border-radius-left-5px"><a href="{{ path('homepage') }}">Home</a></li>
+
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li><a href="{{ path('cars-list') }}" title="">Cars</a>
+                                <ul>
+                                    <li><a href="{{ path('cars-list') }}" title="">List of all cars</a></li>
+                                    {#<li><a href="#" title="">Sub menu 2</a></li>#}
+                                    {#<li><a href="#" title="">Sub menu 3</a></li>#}
+                                    {#<li><a href="#" title="">Sub menu 4</a></li>#}
+                                    {#<li><a href="#" title="">Sub menu 5</a></li>#}
+                                </ul>
+                            </li>
+                        {% endif %}
+
                         <li><a href="#" title="">About us</a></li>
                     </ul>
                 </div>

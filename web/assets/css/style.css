@@ -724,7 +724,7 @@ h1.double-color.sp{
     min-height:300px;
 }
 .portfolio-content {
-    width:1020px;
+    width:auto;
     padding-top:20px
 }
 .portfolio-content a img{
@@ -1063,4 +1063,15 @@ ul.display-short li .posts-info span.user{
     font-weight:700;
     margin-right: 10px;
     margin-top: 10px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-30 {
+    flex-basis: 30%;
 }

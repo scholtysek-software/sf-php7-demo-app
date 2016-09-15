@@ -7,3 +7,12 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.repository.car:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
+        arguments:
+            - AppBundle\Entity\Car
+    app.service.car:
+        class: AppBundle\Service\Car
+        calls:
+            - [setCarRepository, ['@app.repository.car']]
