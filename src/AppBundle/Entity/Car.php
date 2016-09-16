@@ -31,6 +31,12 @@ class Car
     private $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity="LengthUnit", inversedBy="cars")
+     * @ORM\JoinColumn(name="length_unit_id", referencedColumnName="id")
+     */
+    private $lengthUnit;
+
+    /**
      * @return int
      */
     public function getId()
@@ -84,5 +90,29 @@ class Car
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set lengthUnit
+     *
+     * @param \AppBundle\Entity\LengthUnit $lengthUnit
+     *
+     * @return Car
+     */
+    public function setLengthUnit(\AppBundle\Entity\LengthUnit $lengthUnit = null)
+    {
+        $this->lengthUnit = $lengthUnit;
+
+        return $this;
+    }
+
+    /**
+     * Get lengthUnit
+     *
+     * @return \AppBundle\Entity\LengthUnit
+     */
+    public function getLengthUnit()
+    {
+        return $this->lengthUnit;
     }
 }
