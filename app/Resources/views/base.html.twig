@@ -28,10 +28,7 @@
                             <li><a href="{{ path('cars-list') }}" title="">Cars</a>
                                 <ul>
                                     <li><a href="{{ path('cars-list') }}" title="">List of all cars</a></li>
-                                    {#<li><a href="#" title="">Sub menu 2</a></li>#}
-                                    {#<li><a href="#" title="">Sub menu 3</a></li>#}
-                                    {#<li><a href="#" title="">Sub menu 4</a></li>#}
-                                    {#<li><a href="#" title="">Sub menu 5</a></li>#}
+                                    <li><a href="{{ path('car-add') }}" title="">Add new car</a></li>
                                 </ul>
                             </li>
                         {% endif %}
@@ -39,7 +36,6 @@
                         <li><a href="#" title="">About us</a></li>
                     </ul>
                 </div>
-
 
                 <div class="user-info float-right">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="full-width-wrapper" style="margin-bottom: 30px;">
+        <div class="fixed-width-wrapper" id="body-content">
+            <!--Content-->
+            <div id="content" class="float-left content-left">
+                <div class="header-text">
+                    <ul id="breadcrumbs">
+                        <li><a href="{{ path('homepage') }}" title="">Home</a></li>
+                        <li><a href="{{ path('cars-list') }}" title="">Cars</a></li>
+                        <li class="current"><a href="#" title="">Add car</a></li>
+                    </ul>
+
+                    <h1 class="first-word double-color sp">Add new car</h1>
+
+                </div>
+
+                <div>
+                    <div class="flex-container">
+                        {{ form_start(form) }}
+                        <div class="form-row">
+                            {{ form_errors(form.name) }}
+                            {{ form_label(form.name, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                            {{ form_widget(form.name, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                        </div>
+                        <div class="form-row">
+                            {{ form_errors(form.lengthUnit) }}
+                            {{ form_label(form.lengthUnit, null,  {'label_attr':{'class': 'form-row-label'}}) }}
+                            {{ form_widget(form.lengthUnit, {'attr':{'class': 'input-field', 'style':'width:400px;'}}) }}
+                        </div>
+                        <div class="form-row">
+                            <label class="form-row-label">&nbsp;</label>
+                            {{ form_widget(form.save, {'attr': {'class': 'black border-radius-3px bold submit'}}) }}
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+            <!--/Content-->
+
+            <!--Sidebar-->
+            <div id="sidebar" class="float-right">
+
+                <!--box-->
+                <div class="box">
+                    <h1 class="first-word double-color sp">More Links</h1>
+
+                    <ul class="list cat">
+                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                        <li class="current"><a href="#" title="">Praesent ultricies urna a urna</a></li>
+                        <li><a href="#" title="">Quisque metus enim, venenatis</a></li>
+                        <li><a href="#" title="">Nullam ven tincidunt dolor consectetur </a></li>
+                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                    </ul>
+                </div>
+                <!--/box-->
+
+
+                <!--box-->
+                <div class="box">
+                    <h1 class="first-word double-color sp">Locate us</h1>
+
+                    <div class="img-border preloading-light">
+                        <img src="{{ asset('assets/images/pix/locateus.jpg') }}" alt="">
+                    </div>
+                </div>
+                <!--/box-->
+            </div>
+            <!--/Sidebar-->
+        </div>
+    </div>
+{% endblock %}
