@@ -3,10 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="car")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Car")
  */
 class Car
 {
@@ -20,6 +21,11 @@ class Car
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 1,
+     *      max = 32
+     * )
      * @var string
      */
     private $name;

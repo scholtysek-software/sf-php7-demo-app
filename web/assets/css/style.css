@@ -16,7 +16,7 @@ body{
 }
 
 
-form input.input-field,textarea{
+form input.input-field, select.input-field, textarea{
     background:#FFF url(../images/text-field-bg.png) top repeat-x;
     border:1px solid #d8d8d9;
     padding:7px 5px;

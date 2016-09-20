@@ -9,6 +9,7 @@ use AppBundle\Form\CarForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Service\Car as CarService;
 
 /**
  * Class CarController
@@ -47,7 +48,12 @@ class CarController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump('OK');
+
+            /** @var CarService $carService */
+            $carService = $this->get('app.service.car');
+            $carService->addCar($car);
+
+            return $this->redirectToRoute('cars-list');
         }
 
         return $this->render('AppBundle:cars:car-add.html.twig', [

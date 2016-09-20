@@ -188,15 +188,7 @@ $(document).ready(function(){
 	$(".tipMe.tip_left").tipTip({maxWidth: "auto", edgeOffset: 5,defaultPosition:"left"});
 	$(".tipMe.tip_right").tipTip({maxWidth: "auto", edgeOffset: 5,defaultPosition:"right"});
 	$(".tipMe.tip_top").tipTip({maxWidth: "auto", edgeOffset: 5,defaultPosition:"top"});
-	
-	
-	
-	/*Empty text-box
-	/ ====================================================================================
-	*/
-	$("input:text,input:password").css({color:'#CCC'});
-	$("input:text,input:password").emptyTextBox();
-	
+
 	/*Scoll to comment
 	/ ====================================================================================
 	*/
