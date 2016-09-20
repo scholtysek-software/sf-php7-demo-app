@@ -43,6 +43,11 @@ class Car
     private $lengthUnit;
 
     /**
+     * @ORM\OneToMany(targetEntity="CarEntry", mappedBy="car")
+     */
+    private $carEntries;
+
+    /**
      * @return int
      */
     public function getId()

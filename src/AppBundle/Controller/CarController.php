@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Car;
-use AppBundle\Entity\LengthUnit;
 use AppBundle\Entity\User;
 use AppBundle\Form\CarForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -59,5 +58,15 @@ class CarController extends Controller
         return $this->render('AppBundle:cars:car-add.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/{carId}/entries", name="car-entries-list")
+     * @param Request $request
+     */
+    public function listEntriesAction(Request $request)
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
     }
 }
