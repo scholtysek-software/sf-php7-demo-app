@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -83,11 +84,11 @@ class Car
     /**
      * Set user
      *
-     * @param \AppBundle\Entity\User $user
+     * @param User $user
      *
      * @return Car
      */
-    public function setUser(\AppBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -97,7 +98,7 @@ class Car
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\User
+     * @return User
      */
     public function getUser()
     {
@@ -107,11 +108,11 @@ class Car
     /**
      * Set lengthUnit
      *
-     * @param \AppBundle\Entity\LengthUnit $lengthUnit
+     * @param LengthUnit $lengthUnit
      *
      * @return Car
      */
-    public function setLengthUnit(\AppBundle\Entity\LengthUnit $lengthUnit = null)
+    public function setLengthUnit(LengthUnit $lengthUnit = null)
     {
         $this->lengthUnit = $lengthUnit;
 
@@ -121,7 +122,7 @@ class Car
     /**
      * Get lengthUnit
      *
-     * @return \AppBundle\Entity\LengthUnit
+     * @return LengthUnit
      */
     public function getLengthUnit()
     {
@@ -132,17 +133,17 @@ class Car
      */
     public function __construct()
     {
-        $this->carEntries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->carEntries = new ArrayCollection();
     }
 
     /**
      * Add carEntry
      *
-     * @param \AppBundle\Entity\CarEntry $carEntry
+     * @param CarEntry $carEntry
      *
      * @return Car
      */
-    public function addCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    public function addCarEntry(CarEntry $carEntry)
     {
         $this->carEntries[] = $carEntry;
 
@@ -152,9 +153,9 @@ class Car
     /**
      * Remove carEntry
      *
-     * @param \AppBundle\Entity\CarEntry $carEntry
+     * @param CarEntry $carEntry
      */
-    public function removeCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    public function removeCarEntry(CarEntry $carEntry)
     {
         $this->carEntries->removeElement($carEntry);
     }

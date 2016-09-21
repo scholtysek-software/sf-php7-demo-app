@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,7 +34,7 @@ class LengthUnit
      */
     public function __construct()
     {
-        $this->cars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cars = new ArrayCollection();
     }
 
     /**
@@ -73,11 +74,11 @@ class LengthUnit
     /**
      * Add car
      *
-     * @param \AppBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return LengthUnit
      */
-    public function addCar(\AppBundle\Entity\Car $car)
+    public function addCar(Car $car)
     {
         $this->cars[] = $car;
 
@@ -87,9 +88,9 @@ class LengthUnit
     /**
      * Remove car
      *
-     * @param \AppBundle\Entity\Car $car
+     * @param Car $car
      */
-    public function removeCar(\AppBundle\Entity\Car $car)
+    public function removeCar(Car $car)
     {
         $this->cars->removeElement($car);
     }

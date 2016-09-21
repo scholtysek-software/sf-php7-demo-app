@@ -71,7 +71,7 @@ class CarController extends Controller
      *     class="AppBundle\Entity\Car"
      * )
      * @param Request $request
-     *
+     * @param Car $car
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function listEntriesAction(Request $request, Car $car)

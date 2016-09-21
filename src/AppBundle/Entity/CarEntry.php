@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -106,17 +107,17 @@ class CarEntry
      */
     public function __construct()
     {
-        $this->carActions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->carActions = new ArrayCollection();
     }
 
     /**
      * Add carAction
      *
-     * @param \AppBundle\Entity\CarAction $carAction
+     * @param CarAction $carAction
      *
      * @return CarEntry
      */
-    public function addCarAction(\AppBundle\Entity\CarAction $carAction)
+    public function addCarAction(CarAction $carAction)
     {
         $this->carActions[] = $carAction;
 
@@ -126,9 +127,9 @@ class CarEntry
     /**
      * Remove carAction
      *
-     * @param \AppBundle\Entity\CarAction $carAction
+     * @param CarAction $carAction
      */
-    public function removeCarAction(\AppBundle\Entity\CarAction $carAction)
+    public function removeCarAction(CarAction $carAction)
     {
         $this->carActions->removeElement($carAction);
     }

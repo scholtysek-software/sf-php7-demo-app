@@ -28,11 +28,11 @@ class User extends BaseUser
     /**
      * Add car
      *
-     * @param \AppBundle\Entity\Car $car
+     * @param Car $car
      *
      * @return User
      */
-    public function addCar(\AppBundle\Entity\Car $car)
+    public function addCar(Car $car)
     {
         $this->cars[] = $car;
 
@@ -42,9 +42,9 @@ class User extends BaseUser
     /**
      * Remove car
      *
-     * @param \AppBundle\Entity\Car $car
+     * @param Car $car
      */
-    public function removeCar(\AppBundle\Entity\Car $car)
+    public function removeCar(Car $car)
     {
         $this->cars->removeElement($car);
     }
