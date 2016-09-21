@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,6 +21,7 @@ class User extends BaseUser
 
     /**
      * @ORM\OneToMany(targetEntity="Car", mappedBy="user")
+     * @var ArrayCollection
      */
     protected $cars;
 

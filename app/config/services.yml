@@ -17,7 +17,19 @@ services:
             factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
             arguments:
                 - AppBundle\Entity\LengthUnit
+    app.repository.car_entry:
+            class: AppBundle\Repository\CarEntry
+            factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
+            arguments:
+                - AppBundle:CarEntry
+    app.repository.car_action:
+                class: AppBundle\Repository\CarAction
+                factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
+                arguments:
+                    - AppBundle:CarAction
     app.service.car:
         class: AppBundle\Service\Car
         arguments:
             - '@app.repository.car'
+            - '@app.repository.car_entry'
+            - '@app.repository.car_action'

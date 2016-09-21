@@ -126,4 +126,45 @@ class Car
     {
         return $this->lengthUnit;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carEntries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carEntry
+     *
+     * @param \AppBundle\Entity\CarEntry $carEntry
+     *
+     * @return Car
+     */
+    public function addCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    {
+        $this->carEntries[] = $carEntry;
+
+        return $this;
+    }
+
+    /**
+     * Remove carEntry
+     *
+     * @param \AppBundle\Entity\CarEntry $carEntry
+     */
+    public function removeCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    {
+        $this->carEntries->removeElement($carEntry);
+    }
+
+    /**
+     * Get carEntries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarEntries()
+    {
+        return $this->carEntries;
+    }
 }

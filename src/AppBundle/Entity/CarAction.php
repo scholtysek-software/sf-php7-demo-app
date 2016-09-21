@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CarAction")
  * @ORM\Table(name="car_action")
  */
 class CarAction
@@ -49,5 +50,47 @@ class CarAction
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carEntries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carEntry
+     *
+     * @param \AppBundle\Entity\CarEntry $carEntry
+     *
+     * @return CarAction
+     */
+    public function addCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    {
+        $this->carEntries[] = $carEntry;
+
+        return $this;
+    }
+
+    /**
+     * Remove carEntry
+     *
+     * @param \AppBundle\Entity\CarEntry $carEntry
+     */
+    public function removeCarEntry(\AppBundle\Entity\CarEntry $carEntry)
+    {
+        $this->carEntries->removeElement($carEntry);
+    }
+
+    /**
+     * Get carEntries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarEntries()
+    {
+        return $this->carEntries;
     }
 }

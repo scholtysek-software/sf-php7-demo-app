@@ -11,18 +11,18 @@
                         <li class="current"><a href="#" title="">Cars</a></li>
                     </ul>
 
-                    <h1 class="first-word double-color sp">Your cars</h1>
+                    <h1 class="first-word double-color sp">Car entries</h1>
 
                 </div>
 
                 <div>
                     <div class="flex-container">
-                        {% for car in cars %}
+                        {% for entry in entries %}
                             <div class="flex-30">
-                                <h3 class="first-word">{{ car.name }}</h3>
-                                <p>Short car description</p>
-                                <p><a href="{{ path('car-entries-list', {'car': car.getId()}) }}">Entries</a> </p>
-
+                                {{ entry.date | date('Y-m-d') }}
+                                {% for action in entry.getCarActions() %}
+                                    <p>{{ action.name }}</p>
+                                {% endfor %}
                                 <div class="sp"></div>
                             </div>
                         {% endfor %}

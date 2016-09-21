@@ -5,6 +5,8 @@ namespace AppBundle\Service;
 use AppBundle\Entity\User;
 use AppBundle\Repository\Car as CarRepository;
 use AppBundle\Entity\Car as CarEntity;
+use AppBundle\Repository\CarEntry as CarEntryRepository;
+use AppBundle\Repository\CarAction as CarActionRepository;
 
 class Car
 {
@@ -14,11 +16,29 @@ class Car
     private $carRepository;
 
     /**
-     * @param CarRepository $carRepository
+     * @var CarEntryRepository
      */
-    public function __construct(CarRepository $carRepository)
-    {
+    private $carEntryRepository;
+
+    /**
+     * @var CarActionRepository
+     */
+    private $carActionRepository;
+
+    /**
+     * Car constructor.
+     * @param CarRepository $carRepository
+     * @param CarEntryRepository $carEntryRepository
+     * @param CarActionRepository $carActionRepository
+     */
+    public function __construct(
+        CarRepository $carRepository,
+        CarEntryRepository $carEntryRepository,
+        CarActionRepository $carActionRepository
+    ) {
         $this->carRepository = $carRepository;
+        $this->carEntryRepository = $carEntryRepository;
+        $this->carActionRepository = $carActionRepository;
     }
 
     /**

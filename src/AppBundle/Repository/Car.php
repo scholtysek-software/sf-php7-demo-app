@@ -2,11 +2,9 @@
 
 namespace AppBundle\Repository;
 
-
-use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Car as CarEntity;
 
-class Car extends EntityRepository
+class Car extends AbstractRepository
 {
     /**
      * @param CarEntity $car
@@ -14,10 +12,5 @@ class Car extends EntityRepository
     public function save(CarEntity $car)
     {
         $this->getEntityManager()->persist($car);
-    }
-
-    public function synchronize()
-    {
-        $this->getEntityManager()->flush();
     }
 }

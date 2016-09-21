@@ -5,8 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="car_history")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CarHistory")
+ * @ORM\Table(name="car_entry")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CarEntry")
  */
 class CarEntry
 {
@@ -21,7 +21,7 @@ class CarEntry
     /**
      * @ORM\ManyToMany(targetEntity="CarAction", mappedBy="carEntries")
      */
-    private $carAction;
+    private $carActions;
 
     /**
      * @ORM\Column(type="date")
@@ -31,7 +31,7 @@ class CarEntry
 
     /**
      * @ORM\ManyToOne(targetEntity="Car", inversedBy="carEntries")
-     * @ORM\JoinColumn(name="car_entry_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
 
@@ -78,16 +78,47 @@ class CarEntry
     /**
      * @return mixed
      */
-    public function getCarAction()
+    public function getCarActions()
     {
-        return $this->carAction;
+        return $this->carActions;
     }
 
     /**
-     * @param mixed $carAction
+     * @param mixed $carActions
      */
-    public function setCarAction($carAction)
+    public function setCarActions($carActions)
     {
-        $this->carAction = $carAction;
+        $this->carActions = $carActions;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carActions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carAction
+     *
+     * @param \AppBundle\Entity\CarAction $carAction
+     *
+     * @return CarEntry
+     */
+    public function addCarAction(\AppBundle\Entity\CarAction $carAction)
+    {
+        $this->carActions[] = $carAction;
+
+        return $this;
+    }
+
+    /**
+     * Remove carAction
+     *
+     * @param \AppBundle\Entity\CarAction $carAction
+     */
+    public function removeCarAction(\AppBundle\Entity\CarAction $carAction)
+    {
+        $this->carActions->removeElement($carAction);
     }
 }
