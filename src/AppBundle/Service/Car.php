@@ -2,6 +2,8 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\CarAction;
+use AppBundle\Entity\CarEntry;
 use AppBundle\Entity\User;
 use AppBundle\Repository\Car as CarRepository;
 use AppBundle\Entity\Car as CarEntity;
@@ -59,5 +61,23 @@ class Car
     {
         $this->carRepository->save($car);
         $this->carRepository->synchronize();
+    }
+
+    /**
+     * @param CarEntry $carEntry
+     */
+    public function addCarEntry(CarEntry $carEntry)
+    {
+        /** @var CarAction $carAction */
+        foreach ($carEntry->getCarActions() as $carAction)
+        {
+            $carEntry->addCarAction($carAction);
+            $carAction->addCarEntry($carEntry);
+
+            $this->carActionRepository->save($carAction);
+        }
+
+        $this->carEntryRepository->save($carEntry);
+        $this->carEntryRepository->synchronize();
     }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="car_entry")
@@ -28,6 +29,16 @@ class CarEntry
      * @var string
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(
+     *      min = 1
+     * )
+     * @var int
+     */
+    private $mileage;
 
     /**
      * @ORM\ManyToOne(targetEntity="Car", inversedBy="carEntries")
@@ -120,5 +131,21 @@ class CarEntry
     public function removeCarAction(\AppBundle\Entity\CarAction $carAction)
     {
         $this->carActions->removeElement($carAction);
+    }
+
+    /**
+     * @return int
+     */
+    public function getMileage()
+    {
+        return $this->mileage;
+    }
+
+    /**
+     * @param int $mileage
+     */
+    public function setMileage($mileage)
+    {
+        $this->mileage = $mileage;
     }
 }

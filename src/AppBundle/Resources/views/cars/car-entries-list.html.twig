@@ -8,23 +8,32 @@
                 <div class="header-text">
                     <ul id="breadcrumbs">
                         <li><a href="{{ path('homepage') }}" title="">Home</a></li>
-                        <li class="current"><a href="#" title="">Cars</a></li>
+                        <li><a href="{{ path('cars-list') }}" title="">Cars</a></li>
+                        <li><a href="{{ path('car-entries-list', {"car": car.id}) }}" title="">{{ car.name }}</a></li>
                     </ul>
 
-                    <h1 class="first-word double-color sp">Car entries</h1>
+                    <h1 class="first-word double-color sp">{{ car.name }} entries</h1>
 
                 </div>
 
                 <div>
                     <div class="flex-container">
-                        {% for entry in entries %}
-                            <div class="flex-30">
-                                {{ entry.date | date('Y-m-d') }}
-                                {% for action in entry.getCarActions() %}
-                                    <p>{{ action.name }}</p>
-                                {% endfor %}
-                                <div class="sp"></div>
-                            </div>
+                        {% if (car.carEntries | length == 0) %}
+                            <p>No entries yet!</p>
+                        {% endif %}
+                        {% for entry in car.carEntries %}
+                            <div class="flex-100 flex-container sp" style="font-size: 1.1em">
+                                <div>
+                                    {% for action in entry.getCarActions() %}
+                                        <span>{{ action.name }}</span><br/>
+                                    {% endfor %}
+                                </div>
+                                <div  class="flex-30" style="text-align: right">
+                                    <span>{{ entry.date | date('d.m.Y') }}</span> <br/>
+                                    <span>{{ entry.mileage }} {{ car.lengthUnit.name }}</span>
+                                </div>
+                            </div><br/>
+                            <div class="sp"></div>
                         {% endfor %}
                     </div>
                 </div>
@@ -39,11 +48,7 @@
                     <h1 class="first-word double-color sp">More Links</h1>
 
                     <ul class="list cat">
-                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
-                        <li class="current"><a href="#" title="">Praesent ultricies urna a urna</a></li>
-                        <li><a href="#" title="">Quisque metus enim, venenatis</a></li>
-                        <li><a href="#" title="">Nullam ven tincidunt dolor consectetur </a></li>
-                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                        <li><a href="{{ path('car-entries-add', {'car': car.id }) }}" title="">Add new entry </a></li>
                     </ul>
                 </div>
                 <!--/box-->

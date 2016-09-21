@@ -1075,3 +1075,6 @@ ul.display-short li .posts-info span.user{
 .flex-30 {
     flex-basis: 30%;
 }
+.flex-100 {
+    flex-basis: 100%;
+}

@@ -44,6 +44,7 @@ class Car
 
     /**
      * @ORM\OneToMany(targetEntity="CarEntry", mappedBy="car")
+     * @ORM\OrderBy({"date" = "DESC"})
      */
     private $carEntries;
 

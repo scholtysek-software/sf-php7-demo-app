@@ -17,12 +17,14 @@
 
                 <div>
                     <div class="flex-container">
+                        {% if (cars | length == 0) %}
+                            <p>No cars yet!</p>
+                        {% endif %}
                         {% for car in cars %}
-                            <div class="flex-30">
+                            <div class="flex-100">
                                 <h3 class="first-word">{{ car.name }}</h3>
-                                <p>Short car description</p>
+                                <p>Unit of length: {{ car.lengthUnit.name }}</p>
                                 <p><a href="{{ path('car-entries-list', {'car': car.getId()}) }}">Entries</a> </p>
-
                                 <div class="sp"></div>
                             </div>
                         {% endfor %}
@@ -39,11 +41,7 @@
                     <h1 class="first-word double-color sp">More Links</h1>
 
                     <ul class="list cat">
-                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
-                        <li class="current"><a href="#" title="">Praesent ultricies urna a urna</a></li>
-                        <li><a href="#" title="">Quisque metus enim, venenatis</a></li>
-                        <li><a href="#" title="">Nullam ven tincidunt dolor consectetur </a></li>
-                        <li><a href="#" title="">Lorem ipsum dolor sit amet consectetur </a></li>
+                        <li><a href="{{ path('car-add') }}" title="">Add new car</a></li>
                     </ul>
                 </div>
                 <!--/box-->

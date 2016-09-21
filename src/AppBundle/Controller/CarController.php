@@ -4,7 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Car;
 use AppBundle\Entity\User;
+use AppBundle\Form\CarEntryForm;
 use AppBundle\Form\CarForm;
+use AppBundle\Entity\CarEntry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -82,7 +84,43 @@ class CarController extends Controller
         }
 
         return $this->render('AppBundle:cars:car-entries-list.html.twig', [
-            'entries' => $car->getCarEntries()
+            'car' => $car
+        ]);
+    }
+
+    /**
+     * @Route("/{car}/entries/add", name="car-entries-add")
+     * @ParamConverter(
+     *     "car",
+     *     class="AppBundle\Entity\Car"
+     * )
+     *
+     * @param Request $request
+     * @param Car $car
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function addCarEntryAction(Request $request, Car $car)
+    {
+        $carEntry = new CarEntry();
+        $carEntry->setCar($car);
+
+        $form = $this->createForm(CarEntryForm::class, $carEntry);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var CarService $carService */
+            $carService = $this->get('app.service.car');
+            $carService->addCarEntry($carEntry);
+
+            return $this->redirectToRoute('car-entries-list', [
+                'car' => $car->getId()
+            ]);
+        }
+
+        return $this->render('AppBundle:cars:car-entries-add.html.twig', [
+            'car' => $car,
+            'form' => $form->createView()
         ]);
     }
 }
